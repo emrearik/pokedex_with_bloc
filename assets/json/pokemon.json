@@ -575,10 +575,10 @@
     {
         "id": 29,
         "name": {
-            "english": "Nidoran♀",
-            "japanese": "ニドラン♀",
+            "english": "Nidoran",
+            "japanese": "ニドラン",
             "chinese": "尼多兰",
-            "french": "Nidoran♀"
+            "french": "Nidoran"
         },
         "type": [
             "Poison"
