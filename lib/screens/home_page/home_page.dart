@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex_with_bloc/business_logic/cubit/pokedex_cubit.dart';
 import 'package:pokedex_with_bloc/business_logic/state/pokedex_state.dart';
-import 'package:pokedex_with_bloc/data/repositories/pokedex_repositories.dart';
 import 'package:pokedex_with_bloc/screens/home_page/widget/pokemon_show_widget.dart';
-import 'package:pokedex_with_bloc/utils/extensions/pokemon_image.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,7 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    context.read<PokedexCubit>().getPokemonList();
+    context.read<PokedexCubit>().init();
     super.initState();
   }
 
@@ -56,9 +54,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget buildPokedexLoading() {
-    return Center(
-      child: CircularProgressIndicator(),
-    );
+    return Center(child: CircularProgressIndicator());
   }
 
   Widget buildPokedexCompleted(PokedexCompleted state) {
@@ -81,16 +77,21 @@ class _HomePageState extends State<HomePage> {
             child: Container(
               height: MediaQuery.of(context).size.height / 1.3,
               child: GridView.builder(
+                shrinkWrap: false,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
+                  childAspectRatio: 1.3 / 1,
                 ),
-                itemCount: 100,
+                itemCount: state.pokedexList.length + 1,
+                controller: context.read<PokedexCubit>().scrollController,
                 itemBuilder: (context, index) {
-                  return PokemonShow(
-                    pokemonID: state.pokedexList[index].id.toString(),
-                    pokemonName:
-                        state.pokedexList[index].name!.english.toString(),
-                    state: state,
+                  if (index == state.pokedexList.length) {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                  return GestureDetector(
+                    child: PokemonShow(
+                      pokemon: state.pokedexList[index],
+                    ),
                   );
                 },
               ),

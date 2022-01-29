@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:pokedex_with_bloc/data/models/pokedex_model.dart';
 
 abstract class PokedexState {
@@ -14,8 +15,8 @@ class PokedexLoading extends PokedexState {
 
 class PokedexCompleted extends PokedexState {
   final List<PokedexModel> pokedexList;
-  final String test;
-  const PokedexCompleted(this.pokedexList, this.test);
+
+  const PokedexCompleted(this.pokedexList);
 }
 
 class PokedexError extends PokedexState {

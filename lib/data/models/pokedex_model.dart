@@ -1,8 +1,11 @@
+import 'package:flutter/material.dart';
+
 class PokedexModel {
   int? id;
   Name? name;
   List<String>? type;
   Base? base;
+  Color? color;
 
   PokedexModel({this.id, this.name, this.type, this.base});
 

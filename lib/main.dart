@@ -27,18 +27,31 @@ class PokedexAppWithBloc extends StatelessWidget {
             ),
           ),
           textTheme: const TextTheme(
-              headline1: TextStyle(
-                color: Colors.black,
-                fontSize: 36,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.bold,
-              ),
-              headline3: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.bold,
-              )),
+            headline1: TextStyle(
+              color: Colors.black,
+              fontSize: 36,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+            ),
+            headline2: TextStyle(
+              color: Colors.black,
+              fontSize: 24,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+            ),
+            headline3: TextStyle(
+              color: Colors.black,
+              fontSize: 16,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+            ),
+            headline4: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.normal,
+              fontSize: 13,
+              fontFamily: 'Poppins',
+            ),
+          ),
         ),
         debugShowCheckedModeBanner: false,
         home: BlocProvider(
